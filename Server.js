@@ -44,7 +44,7 @@ app.post("/post",async (req,res)=>{
 app.get("/expenses", async (req, res) => {
     try {
         const expenses = await Expense.find();
-        res.json({message:"Expenses retrived succussfull"});
+        res.json({message:"Expenses retrived succussfull",expenses});
     } catch (error) {
         res.json({message:"Error retriving exper"});
     }
