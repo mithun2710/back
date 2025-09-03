@@ -50,15 +50,15 @@ app.get("/expenses", async (req, res) => {
     }
 });
 
-app.delete("/delete",async(req,res)=>{
+app.delete("/delete/:id", async (req,res)=>{
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         await Expense.findByIdAndDelete(id);
-        res.json({message:"Expense deleting successfully"});
+        res.json({ message: "Expense deleted successfully" });
     } catch (error) {
-        res.json({message:"Error deleting expense",error:error});
+        res.json({ message: "Error deleting expense", error: error.message });
     }
-})
+});
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`)
